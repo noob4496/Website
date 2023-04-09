@@ -37,15 +37,21 @@
             });
         }
 
-        function obfuscateCode() {
+        async function obfuscateCode() {
             // Get the input code
             var inputCode = editor.getValue();
 
-            // Do the obfuscation (replace this with your own obfuscation code)
-            var obfuscatedCode = inputCode.replace(/ /g, "_").replace(/\n/g, "_");
+            const obfuscatedCode = await fetch('/util/obfuscate', {
+                body: JSON.stringify({ text: inputCode }),
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
 
             // Display the obfuscated code
-            outputEditor.setValue(obfuscatedCode);
+            outputEditor.setValue(await obfuscatedCode.text());
         }
 
         function copyToClipboard() {
