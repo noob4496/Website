@@ -1,0 +1,131 @@
+/* Style for the input and output labels */
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    overflow: hidden;
+    height: 10vh;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(background2.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.logo {
+    font-size: 2em;
+    color: white;
+    user-select: none;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.hold-nav::after {
+    transform: scaleX(1) !important;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: white;
+}
+
+/* Style for the input and output textboxes */
+.textbox {
+    display: block;
+    width: 100%;
+    height: 300px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.the-border+span {
+    margin-left: 20px;
+}
+
+.code {
+    height: 65vh;
+    width: 100%
+}
+
+#input-box {
+    width: 60%;
+    height: 50%;
+}
+
+#output-box {
+    width: 30%;
+    height: 50%;
+}
+
+/* Style for the obfuscate button */
+button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 2vmin;
+    font-weight: bold;
+    text-align: center;
+    align-items: baseline;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #ffffff;
+    background-color: #141414;
+    cursor: pointer;
+}
+
+.InputLabel {
+    color: solid white;
+}

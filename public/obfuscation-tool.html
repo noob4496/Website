@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Obfuscation Tool</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="obfuscation.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function redirectToObfuscationTool() {
+            window.location.href = "obfuscation-tool.html";
+        }
+
+        function redirectToHome() {
+            window.location.href = "body.html";
+        }
+
+        let editor, outputEditor;
+
+        function init() {
+            editor = monaco.editor.create(document.getElementById('input-code'), {
+                value: "-- Enter your Lua code here",
+                language: 'lua',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            outputEditor = monaco.editor.create(document.getElementById('output-code'), {
+                value: "-- Obfuscated code will appear here",
+                language: 'lua',
+                theme: 'vs-dark',
+                readOnly: true,
+                automaticLayout: true
+            });
+        }
+
+        function obfuscateCode() {
+            // Get the input code
+            var inputCode = editor.getValue();
+
+            // Do the obfuscation (replace this with your own obfuscation code)
+            var obfuscatedCode = inputCode.replace(/ /g, "_").replace(/\n/g, "_");
+
+            // Display the obfuscated code
+            outputEditor.setValue(obfuscatedCode);
+        }
+
+        function copyToClipboard() {
+            var outputCode = outputEditor.getValue();
+
+            // Copy the selected text to the clipboard
+            navigator.clipboard.writeText(outputCode);
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/editor/editor.main.min.js"
+        integrity="sha512-CK3czr9gLG2z/ygdSM+gNenkN9AShfpW4gMjVyY06VgFHLoc4OCoO92Z8UkcBwVX0ufoYbJw3IVs1mHfXQeI3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body onload="init()">
+    <script>var require = { paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/' } } </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js"
+        integrity="sha512-gWqaPfGsZiCkYB6e5mNN4SMRpEvLGItLBqgOAoyLSKtDxWS2O1YPcOeGTy8d8l00gqc8rVue9ae/ncZqhmfj4g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/basic-languages/lua/lua.min.js"
+        integrity="sha512-jPcRfnscncxx61TnqpoTWxm3z7G7fYtTNL/5PVAR4HWx4R8ZhZmH5QGqbiKKHIaemR6pN2b4YDD0uIfV2a2H6Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/editor/editor.main.min.js"
+        integrity="sha512-CK3czr9gLG2z/ygdSM+gNenkN9AShfpW4gMjVyY06VgFHLoc4OCoO92Z8UkcBwVX0ufoYbJw3IVs1mHfXQeI3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <div class="topnav">
+        <h2 class="logo">Noob Secure</h2>
+        <nav class="navigation">
+            <a href="#" onclick="redirectToHome()">Home</a>
+            <a href="#">About</a>
+            <a href="#" onclick="redirectToObfuscationTool()" class="hold-nav">Obfuscation Tool</a>
+            <a href="#">Contact</a>
+
+        </nav>
+    </div>
+    <span class="the-border" id="input-box">
+        <div>
+            <label for="input-code">Enter your Lua code:</label>
+            <br>
+            <div id="input-code" class="code"></div>
+            <br>
+            <button onclick="obfuscateCode()">Obfuscate <ion-icon name="lock-closed"></ion-icon></button>
+        </div>
+    </span>
+    <span class="the-border" id="output-box">
+        <div>
+            <label for="output-code">Obfuscated code:</label>
+            <br>
+            <div id="output-code" class="code"></div>
+            <br>
+            <button onclick="copyToClipboard()">Copy Code <ion-icon name="copy-outline"></ion-icon></button>
+        </div>
+    </span>
+</body>
+
+</html>
